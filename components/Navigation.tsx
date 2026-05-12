@@ -62,17 +62,18 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div className={`fixed inset-0 z-[90] bg-[var(--color-bg-primary)]/98 backdrop-blur-2xl transition-all duration-300 lg:hidden ${isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}>
-        <div className="flex min-h-screen w-full flex-col px-4 pt-24 sm:px-6 sm:pt-28">
-          <div className="flex w-full flex-col gap-5 sm:gap-6">
+        <div
+          style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem', paddingTop: '6rem' }}
+          className="flex min-h-screen w-full flex-col sm:pt-28"
+        >
+          <div className="flex w-full flex-col gap-4 sm:gap-5">
             {navLinks.map((link, index) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="w-full border-b border-white/5 pb-5 text-2xl font-bold tracking-[-0.03em] text-white transition-opacity hover:opacity-80 sm:text-3xl"
-                style={{
-                  transitionDelay: `${index * 50}ms`,
-                }}
+                className="w-full border-b border-white/8 pb-4 text-[22px] font-bold tracking-[-0.03em] text-white transition-opacity hover:opacity-80 sm:pb-5 sm:text-[28px]"
+                style={{ transitionDelay: `${index * 50}ms` }}
               >
                 {link.label}
               </a>
@@ -80,12 +81,17 @@ export default function Navigation() {
           </div>
 
           {/* Mobile CTA */}
-          <div className="mt-10 w-full">
-            <a href="#join" onClick={() => setIsOpen(false)} className="btn btn-primary w-full justify-center py-4 text-lg shadow-[0_10px_40px_rgba(242,95,43,0.25)]">
+          <div className="mt-8 w-full sm:mt-10">
+            <a
+              href="#join"
+              onClick={() => setIsOpen(false)}
+              className="btn btn-primary w-full justify-center py-4 text-base shadow-[0_10px_40px_rgba(242,95,43,0.25)] sm:text-lg"
+            >
               Be first — Join the Waitlist
             </a>
-
-            <p className="mt-5 text-center text-sm leading-relaxed text-[var(--color-text-secondary)]">5,000+ already on the waitlist</p>
+            <p className="mt-4 text-center text-sm leading-relaxed text-[var(--color-text-secondary)]">
+              5,000+ already on the waitlist
+            </p>
           </div>
         </div>
       </div>
