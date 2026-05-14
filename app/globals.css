@@ -35,14 +35,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem;
-  scroll-snap-type: y proximity;
+  scroll-padding-top: 0;
+  scroll-snap-type: y mandatory;
   overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
   html {
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 0;
   }
 }
 

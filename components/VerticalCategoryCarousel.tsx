@@ -211,7 +211,7 @@ export default function VerticalCategoryCarousel({ items }: { items: CarouselIte
           ref={(node) => {
             slideRefs.current[index] = node;
           }}
-          className="min-h-svh scroll-mt-16 [scroll-snap-align:start] [&>section]:min-h-svh md:scroll-mt-20"
+          className="h-[100dvh] overflow-hidden pt-16 [scroll-snap-align:start] md:pt-20 [&>section]:!h-[calc(100dvh-4rem)] [&>section]:!min-h-0 md:[&>section]:!h-[calc(100dvh-5rem)]"
         >
           {item.render()}
         </div>
