@@ -211,7 +211,26 @@ export default function VerticalCategoryCarousel({ items }: { items: CarouselIte
           ref={(node) => {
             slideRefs.current[index] = node;
           }}
-          className="h-[100dvh] overflow-hidden pt-16 [scroll-snap-align:start] md:pt-20 [&>section]:!h-[calc(100dvh-4rem)] [&>section]:!min-h-0 md:[&>section]:!h-[calc(100dvh-5rem)]"
+          className={[
+            index === activeIndex ? 'carousel-slide-active' : 'carousel-slide-inactive',
+            item.key === 'hero'
+              ? 'min-h-[100svh] bg-[linear-gradient(180deg,#0a0405_0%,#0d0505_44%,#180706_78%,#0a0405_100%)] [scroll-snap-align:start] [&>section]:!min-h-[100svh] lg:h-[100svh] lg:overflow-hidden lg:[&>section]:!h-[100svh]'
+              : item.key === 'footer'
+              ? '-mt-16 bg-[#070203] [scroll-snap-align:start] md:-mt-20'
+              : 'min-h-[100svh] pt-16 [scroll-snap-align:start] md:pt-20 [&>section]:!min-h-[calc(100svh-4rem)] md:[&>section]:!min-h-[calc(100svh-5rem)] lg:[&>section]:flex lg:[&>section]:items-center lg:[&>section]:justify-center',
+            item.key === 'hero' || item.key === 'footer'
+              ? ''
+              : item.key === 'final'
+              ? 'lg:min-h-[100svh] lg:[&>section]:!min-h-[calc(100svh-5rem)]'
+              : 'lg:h-[100svh] lg:overflow-hidden lg:[&>section]:!h-[calc(100svh-5rem)] lg:[&>section]:!min-h-[calc(100svh-5rem)]',
+            item.key === 'hero'
+              ? 'bg-[linear-gradient(180deg,#0a0405_0%,#0d0505_44%,#180706_78%,#0a0405_100%)]'
+              : item.key === 'final'
+                ? 'bg-[linear-gradient(180deg,#090304_0%,#080203_70%,#070203_100%)]'
+                : item.key === 'footer'
+                  ? 'bg-[#070203]'
+                  : 'bg-[var(--color-bg-primary)]',
+          ].join(' ')}
         >
           {item.render()}
         </div>

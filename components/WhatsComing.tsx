@@ -60,7 +60,7 @@ export default function WhatsComing() {
       <div className="container-wide relative z-10 flex flex-1 flex-col justify-start pb-8 pt-3 sm:pb-10 sm:pt-4 md:pb-10 md:pt-5 lg:pb-12 lg:pt-6">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-5 md:gap-7">
           <div className="grid items-end gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
-            <div>
+            <div className="reveal-rise">
               <span className="inline-flex rounded-full border border-[var(--color-accent-primary)]/35 bg-[var(--color-accent-primary)]/10 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.28em] text-[var(--color-accent-primary)]" style={{ padding: '0.35rem', marginBottom: '0.5rem' }}>
                 Categories
               </span>
@@ -69,17 +69,20 @@ export default function WhatsComing() {
               </h2>
             </div>
 
-            <p className="max-w-[640px] text-[15px] leading-[1.65] text-[var(--color-text-secondary)] sm:text-[16px] md:text-[17px] lg:justify-self-end">
+            <p className="reveal-rise reveal-delay-1 max-w-[640px] text-[15px] leading-[1.65] text-[var(--color-text-secondary)] sm:text-[16px] md:text-[17px] lg:justify-self-end">
               Three categories. One trusted home for Korean culture in India. Built creator-first,
               live-first, authenticity-first.
             </p>
           </div>
 
           <div className="whats-coming-card-row grid auto-cols-[minmax(260px,82%)] grid-flow-col gap-4 overflow-x-auto pb-3 snap-x snap-mandatory md:auto-cols-auto md:grid-flow-row md:grid-cols-3 md:overflow-visible md:pb-0 md:snap-none lg:gap-5">
-            {categories.map((cat) => (
+            {categories.map((cat, index) => (
               <article
                 key={cat.title}
-                className="group relative min-h-[270px] snap-center overflow-hidden rounded-lg border border-white/[0.09] bg-[rgba(10,4,5,0.76)] py-6 pl-7 pr-7 shadow-[0_24px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl transition duration-500 hover:-translate-y-1.5 hover:border-white/20 sm:py-7 sm:pl-8 sm:pr-8 md:min-h-[300px] md:pl-7 md:pr-7 lg:min-h-[314px] lg:py-8 lg:pl-8 lg:pr-8"
+                className={[
+                  'reveal-grow group relative min-h-[270px] snap-center overflow-hidden rounded-lg border border-white/[0.09] bg-[rgba(10,4,5,0.76)] py-6 pl-7 pr-7 shadow-[0_24px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl transition duration-500 hover:-translate-y-1.5 hover:border-white/20 sm:py-7 sm:pl-8 sm:pr-8 md:min-h-[300px] md:pl-7 md:pr-7 lg:min-h-[314px] lg:py-8 lg:pl-8 lg:pr-8',
+                  index === 0 ? 'reveal-delay-1' : index === 1 ? 'reveal-delay-2' : 'reveal-delay-3',
+                ].join(' ')}
                 style={{
                   boxShadow: `0 24px 70px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.04)`,
                 }}
@@ -137,7 +140,7 @@ export default function WhatsComing() {
           </div>
 
           <div
-            className="relative overflow-hidden rounded-lg border border-white/[0.08] bg-white/[0.035] px-5 text-center backdrop-blur-xl sm:px-8"
+            className="reveal-grow reveal-delay-4 relative overflow-hidden rounded-lg border border-white/[0.08] bg-white/[0.035] px-5 text-center backdrop-blur-xl sm:px-8"
             style={{ paddingTop: '1.75rem', paddingBottom: '1.75rem' }}
           >
             <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[var(--color-accent-primary)] via-[var(--color-accent-yellow)] to-[var(--color-accent-primary)]" />
@@ -147,10 +150,13 @@ export default function WhatsComing() {
                 More categories planned
               </p>
               <div className="whats-coming-future-row mx-auto flex w-full max-w-[980px] items-center justify-center gap-3 overflow-x-auto px-1 sm:gap-4">
-                {futureCategories.map((item) => (
+                {futureCategories.map((item, index) => (
                   <span
                     key={item.label}
-                    className="group inline-flex min-h-14 min-w-[158px] shrink-0 items-center justify-center gap-3 rounded-full border border-white/10 bg-[rgba(10,4,5,0.55)] px-5 py-3 text-[14px] font-bold leading-none text-white/90 shadow-[0_12px_34px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.075] sm:min-h-16 sm:min-w-[180px] sm:px-6 sm:text-[15px] lg:min-w-[196px]"
+                    className={[
+                      'reveal-pop group inline-flex min-h-14 min-w-[158px] shrink-0 items-center justify-center gap-3 rounded-full border border-white/10 bg-[rgba(10,4,5,0.55)] px-5 py-3 text-[14px] font-bold leading-none text-white/90 shadow-[0_12px_34px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.075] sm:min-h-16 sm:min-w-[180px] sm:px-6 sm:text-[15px] lg:min-w-[196px]',
+                      index === 0 ? 'reveal-delay-2' : index === 1 ? 'reveal-delay-3' : index === 2 ? 'reveal-delay-4' : 'reveal-delay-5',
+                    ].join(' ')}
                   >
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.07] text-[17px] shadow-[0_0_18px_rgba(244,183,58,0.18)] sm:h-9 sm:w-9 sm:text-[18px]">
                       {item.icon}

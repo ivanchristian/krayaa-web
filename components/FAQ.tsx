@@ -1,76 +1,148 @@
 'use client';
 
 import { useState } from 'react';
-import type { ReactNode } from 'react';
 
-export default function FAQSection(): ReactNode {
-  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+const faqs = [
+  {
+    q: 'When does Krayaa launch?',
+    a: 'We are building toward a Q3 2026 public launch. Waitlist members will get early access before the wider launch window.',
+  },
+  {
+    q: 'Are the products authentic?',
+    a: 'Yes. Krayaa is built around verified Korean brand and licensed distributor supply. No mystery listings, no gray-market dilution.',
+  },
+  {
+    q: 'What will be available first?',
+    a: 'We are starting with K-beauty and K-pop drops, then expanding into Korean lifestyle, fashion, food, and culture-led categories.',
+  },
+  {
+    q: 'How do creators work with Krayaa?',
+    a: 'Creators can apply for the private launch partner program. Selected partners get higher commissions, samples, exclusive drops, and launch campaign support.',
+  },
+  {
+    q: 'Can Korean brands partner before launch?',
+    a: 'Yes. We are speaking with Korean brands and distributors now for India entry, compliance planning, creator distribution, and launch campaigns.',
+  },
+  {
+    q: 'Will you ship across India?',
+    a: 'That is the plan. The launch operation is being designed around Indian last-mile delivery, customer support, and localized checkout expectations.',
+  },
+  {
+    q: 'Is joining the waitlist free?',
+    a: 'Yes. Joining is free, and it puts you first in line for beta access, drop announcements, creator launches, and launch updates.',
+  },
+];
 
-  const faqs = [
-    {
-      q: 'When does Krayaa launch?',
-      a: "Q3 2026. Waitlist members get early access 48 hours before the public launch. We're also running a limited beta with creators in Q2.",
-    },
-    {
-      q: 'Are the products authentic?',
-      a: 'Yes. We source directly from Korean brands or official distributors. No gray market, no fakes. Every product is verified before it ships.',
-    },
-    {
-      q: 'How do you keep prices competitive?',
-      a: 'Direct partnerships with Korean brands cut out middlemen. No gray-market markups. Plus, our commission model is lean—we make money from volume, not margins.',
-    },
-    {
-      q: "What's the shipping time?",
-      a: 'Most items ship from our warehouse in Delhi within 48 hours. Delivery is typically 3-5 days across India. We also offer express options.',
-    },
-    {
-      q: 'Can I return or exchange?',
-      a: "Yes. 30-day returns on unopened items. We want you to feel safe buying. If it's damaged or wrong, we fix it.",
-    },
-    {
-      q: 'Is there a membership fee?',
-      a: "No membership fee. Waitlist access is free. When we launch, you'll get 48-hour early access to drops as a bonus.",
-    },
-    {
-      q: 'How do I become a creator partner?',
-      a: 'Go to the "For Creators" section and fill out the form. We look for 10K+ followers, authentic engagement, and K-culture interest. We\'ll review and get back within 48 hours.',
-    },
-    {
-      q: 'What payment methods do you accept?',
-      a: "We accept UPI, credit/debit cards, and digital wallets (Google Pay, Apple Pay, Paytm). We're also integrating Buy Now Pay Later options for Q3 launch.",
-    },
-  ];
+export default function FAQSection() {
+  const [expandedIdx, setExpandedIdx] = useState<number | null>(0);
 
   return (
-    <section id="faq" style={{ backgroundColor: 'var(--color-bg-card)' }} className="py-20 md:py-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center mb-4 text-[var(--color-text-primary)]">Frequently Asked</h2>
-        <p className="text-center text-[var(--color-text-secondary)] mb-12">Got a question? We probably have an answer.</p>
+    <section id="faq" className="relative overflow-hidden bg-[var(--color-bg-card)] py-10 text-white sm:py-12 lg:py-10">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(244,183,58,0.12),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(242,95,43,0.14),transparent_30%)]" />
+      <div className="faq-glow pointer-events-none absolute inset-0 opacity-[0.08]" />
 
-        <div className="space-y-3">
-          {faqs.map((faq, idx) => (
-            <div key={idx} className="border border-[var(--color-border)] rounded-lg overflow-hidden" style={{ backgroundColor: 'rgba(10, 4, 5, 0.6)' }}>
-              <button onClick={() => setExpandedIdx(expandedIdx === idx ? null : idx)} className="w-full px-6 py-4 flex justify-between items-center hover:bg-[var(--color-bg-primary)] transition-colors">
-                <h3 className="text-left font-semibold text-[var(--color-text-primary)]">{faq.q}</h3>
-                <span className={`text-[var(--color-accent-primary)] transform transition-transform ${expandedIdx === idx ? 'rotate-180' : ''}`}>▼</span>
-              </button>
+      <div className="container-wide relative z-10">
+        <div className="grid gap-7 lg:grid-cols-[0.68fr_1fr] lg:gap-12">
+          <div className="faq-intro">
+            <span className="inline-flex rounded-full border border-white/12 bg-white/[0.055] px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.26em] text-white/62">
+              FAQ
+            </span>
+            <h2 className="mt-3 max-w-[560px] text-[34px] font-black leading-[0.98] tracking-[-0.045em] sm:text-[44px] md:text-[54px] lg:text-[58px]">
+              Questions before you join?
+            </h2>
+            <p className="mt-4 max-w-[520px] text-[15px] leading-[1.65] text-white/64 sm:text-[17px]">
+              Quick answers for buyers, creators, Korean brands, and anyone checking whether Krayaa is serious. Short version: yes, very.
+            </p>
 
-              {expandedIdx === idx && (
-                <div className="px-6 py-4 border-t border-[var(--color-border)] bg-[var(--color-bg-primary)]">
-                  <p className="text-[var(--color-text-secondary)]">{faq.a}</p>
-                </div>
-              )}
+            <div className="mt-6 rounded-xl border border-[var(--color-accent-primary)]/25 bg-[var(--color-accent-primary)]/10 p-4">
+              <div className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--color-accent-primary)]">Still unsure?</div>
+              <p className="mt-2 text-[14px] leading-[1.5] text-white/70">
+                Send us the question. We are pre-launch, so useful questions help shape the product.
+              </p>
+              <a
+                href="mailto:hello@krayaa.com"
+                className="mt-4 inline-flex min-h-10 items-center justify-center rounded-full border border-white/14 px-4 text-sm font-bold text-white transition hover:border-[var(--color-accent-primary)]/60"
+              >
+                hello@krayaa.com
+              </a>
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-[var(--color-text-secondary)] mb-4">Can't find your answer?</p>
-          <a href="mailto:hello@krayaa.com" className="btn btn-secondary">
-            Get in Touch
-          </a>
+          <div className="grid gap-3">
+            {faqs.map((faq, idx) => {
+              const isOpen = expandedIdx === idx;
+
+              return (
+                <div
+                  key={faq.q}
+                  className="faq-item overflow-hidden rounded-xl border border-white/10 bg-[rgba(10,4,5,0.54)] shadow-[0_18px_48px_rgba(0,0,0,0.24)] backdrop-blur-md transition duration-300 hover:border-[var(--color-accent-yellow)]/28"
+                  style={{ animationDelay: `${idx * 55}ms` }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setExpandedIdx(isOpen ? null : idx)}
+                    className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-5"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${idx}`}
+                  >
+                    <span className="text-[15px] font-black leading-[1.25] tracking-[-0.02em] text-white sm:text-[17px]">{faq.q}</span>
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/[0.055] text-[var(--color-accent-primary)] transition duration-300 ${
+                        isOpen ? 'rotate-45 border-[var(--color-accent-primary)]/45 bg-[var(--color-accent-primary)]/14' : ''
+                      }`}
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </button>
+
+                  <div
+                    id={`faq-answer-${idx}`}
+                    className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="border-t border-white/10 px-4 pb-4 pt-3 text-[14px] leading-[1.6] text-white/64 sm:px-5">{faq.a}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        .faq-glow {
+          background-image:
+            radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0);
+          background-size: 30px 30px;
+          mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
+          animation: faqGlow 24s linear infinite;
+        }
+
+        .faq-intro,
+        .faq-item {
+          animation: faqRise 600ms ease both;
+        }
+
+        @keyframes faqGlow {
+          from { transform: translate3d(0, 0, 0); }
+          to { transform: translate3d(-30px, -30px, 0); }
+        }
+
+        @keyframes faqRise {
+          from { opacity: 0; transform: translateY(18px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .faq-glow,
+          .faq-intro,
+          .faq-item {
+            animation: none;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -41,7 +41,7 @@ export default function Navigation() {
                 ))}
               </div>
 
-              <a href="#join" className="btn btn-primary shrink-0 px-5 py-3 text-sm shadow-[0_8px_30px_rgba(242,95,43,0.18)] xl:px-6">
+              <a href="#join" className="btn btn-primary shrink-0 px-5 py-1.5 text-sm shadow-[0_8px_30px_rgba(242,95,43,0.18)] xl:px-6">
                 Join Waitlist
               </a>
             </div>
@@ -85,7 +85,7 @@ export default function Navigation() {
             <a
               href="#join"
               onClick={() => setIsOpen(false)}
-              className="btn btn-primary w-full justify-center py-4 text-base shadow-[0_10px_40px_rgba(242,95,43,0.25)] sm:text-lg"
+              className="btn btn-primary w-full justify-center py-1.5 text-base shadow-[0_10px_40px_rgba(242,95,43,0.25)] sm:text-lg"
             >
               Be first — Join the Waitlist
             </a>

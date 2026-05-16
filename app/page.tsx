@@ -11,6 +11,7 @@ import Press from '../components/Press';
 import FAQSection from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
 import Footer from '../components/Footer';
+import FloatingWhatsApp from '../components/FloatingWhatsApp';
 import VerticalCategoryCarousel from '../components/VerticalCategoryCarousel';
 
 export default function Home() {
@@ -65,11 +66,15 @@ export default function Home() {
               label: 'Final CTA',
               render: () => <FinalCTA />,
             },
+            {
+              key: 'footer',
+              label: 'Footer',
+              render: () => <Footer />,
+            },
           ]}
         />
-
-        <Footer />
       </main>
+      <FloatingWhatsApp />
     </>
   );
 }
