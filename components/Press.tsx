@@ -1,137 +1,644 @@
-const credibility = [
-  { name: 'KRAFTON', note: 'Korea-India ecosystem signal' },
-  { name: 'Medicube', note: 'K-beauty demand proof' },
-  { name: 'Creator Network', note: 'Private launch pipeline' },
-  { name: 'Seoul Supply', note: 'Brand-first sourcing model' },
-];
+import Image from 'next/image';
 
 const stats = [
-  { value: '5,000+', label: 'buyer waitlist target' },
-  { value: '50+', label: 'creator partners' },
-  { value: '20+', label: 'brand conversations' },
-  { value: '<50%', label: 'bounce-rate target' },
+  { value: '5,000+', label: 'Buyer waitlist target' },
+  { value: '50+', label: 'Creator partners' },
+  { value: '20+', label: 'Brand conversations' },
+  { value: 'Q3 2026', label: 'Public launch window' },
 ];
 
-const signals = [
+const proofPoints = [
   {
-    title: 'Founder-market fit',
-    body: 'Built by a founder who lived in Seoul and understands the trust gap Indian K-culture buyers face.',
+    label: 'Founder-market fit',
+    title: 'Seoul lived-in, India built-for.',
+    body: 'A founder story that explains the trust gap clearly for buyers, brands, and investors.',
   },
   {
-    title: 'Clear launch narrative',
-    body: 'Pre-launch now, creator beta next, Q3 2026 public launch with authenticated Korean supply.',
+    label: 'Launch pipeline',
+    title: 'Buyers, creators, and brands in one story.',
+    body: 'The pre-launch funnel is designed around three audiences, not vanity traffic.',
   },
   {
-    title: 'Press-ready positioning',
-    body: 'A focused India entry story for Korean brands, creators, investors, and culture journalists.',
+    label: 'Press narrative',
+    title: 'Korean culture commerce, localized for India.',
+    body: 'Simple enough for journalists, credible enough for Korean brands entering India.',
   },
 ];
+
+const signals = ['Korea sourced', 'India first', 'Creator led', 'Authenticated supply'];
 
 export default function Press() {
   return (
-    <section id="press" className="relative overflow-hidden bg-[var(--color-bg-primary)] py-10 text-white sm:py-12 lg:py-10">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(242,95,43,0.18),transparent_30%),radial-gradient(circle_at_82%_70%,rgba(34,197,94,0.1),transparent_28%)]" />
-      <div className="press-lines pointer-events-none absolute inset-0 opacity-[0.08]" />
+    <section id="press" className="press-section">
+      <Image src="/assets/background_whykrayaa.png" alt="" fill sizes="100vw" className="press-bg-image" />
+      <div className="press-overlay" />
+      <div className="press-grid" />
 
-      <div className="container-wide relative z-10">
-        <div className="grid gap-7 lg:grid-cols-[0.72fr_1fr] lg:items-end lg:gap-12">
-          <div className="press-rise">
-            <span className="inline-flex rounded-full border border-[var(--color-accent-primary)]/42 bg-[var(--color-accent-primary)]/12 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.26em] text-[var(--color-accent-primary)]">
-              Press & Credibility
-            </span>
-            <h2 className="mt-3 max-w-[640px] text-[34px] font-black leading-[0.98] tracking-[-0.045em] sm:text-[44px] md:text-[54px] lg:text-[58px]">
-              Built to look credible before launch.
-            </h2>
+      <div className="container-wide press-container">
+        <div className="press-shell">
+          <div className="press-copy">
+            <span className="press-kicker">Press & credibility</span>
+            <h2>Signals that make Krayaa feel real before launch.</h2>
+            <p>
+              We are pre-launch, so credibility has to come from clarity: a sharp market, verified supply, founder context, and visible momentum.
+            </p>
           </div>
 
-          <p className="press-rise max-w-[680px] text-[15px] leading-[1.65] text-white/68 sm:text-[17px] lg:justify-self-end">
-            Krayaa needs to work for buyers, creators, brands, VCs, and press from day one. This section turns the pre-launch story into clear signals of momentum.
-          </p>
-        </div>
+          <div className="press-scorecard">
+            <div className="press-scorecard-top">
+              <div>
+                <span>Launch proof</span>
+                <strong>Momentum board</strong>
+              </div>
+              <em>Q3 2026</em>
+            </div>
 
-        <div className="mt-7 grid gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-5">
-          <div className="overflow-hidden rounded-xl border border-white/12 bg-white/[0.045] shadow-[0_26px_90px_rgba(0,0,0,0.42)] backdrop-blur-xl">
-            <div className="grid border-b border-white/10 text-center sm:grid-cols-4">
+            <div className="press-stats">
               {stats.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className="press-card border-b border-white/10 p-4 sm:border-b-0 sm:border-r sm:last:border-r-0"
-                  style={{ animationDelay: `${index * 80}ms` }}
-                >
-                  <div className="text-[28px] font-black leading-none tracking-[-0.045em] text-[var(--color-accent-yellow)] sm:text-[32px]">{stat.value}</div>
-                  <div className="mt-2 text-[10px] font-bold uppercase leading-[1.2] tracking-[0.16em] text-white/48">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid gap-3 p-3 sm:grid-cols-2 lg:p-4">
-              {credibility.map((item, index) => (
-                <div
-                  key={item.name}
-                  className="press-card rounded-lg border border-white/10 bg-[rgba(10,4,5,0.58)] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent-primary)]/35"
-                  style={{ animationDelay: `${index * 90 + 120}ms` }}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="text-[22px] font-black uppercase leading-none tracking-[-0.03em] text-white sm:text-[26px]">{item.name}</div>
-                      <p className="mt-2 text-[13px] leading-[1.45] text-white/58">{item.note}</p>
-                    </div>
-                    <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-primary)] text-sm font-black text-white">
-                      {index + 1}
-                    </span>
-                  </div>
+                <div key={stat.label} className="press-stat" style={{ animationDelay: `${index * 80}ms` }}>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="grid gap-3">
-            {signals.map((signal, index) => (
-              <article
-                key={signal.title}
-                className="press-card rounded-xl border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03))] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.26)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent-yellow)]/35"
-                style={{ animationDelay: `${index * 90 + 180}ms` }}
-              >
-                <div className="mb-3 h-1.5 w-12 rounded-full bg-[linear-gradient(90deg,var(--color-accent-primary),var(--color-accent-yellow))]" />
-                <h3 className="text-[20px] font-black leading-[1.05] tracking-[-0.03em]">{signal.title}</h3>
-                <p className="mt-2 text-[13.5px] leading-[1.5] text-white/62">{signal.body}</p>
+          <div className="press-proof-grid">
+            {proofPoints.map((point, index) => (
+              <article className="press-proof-card" key={point.title} style={{ animationDelay: `${index * 100 + 120}ms` }}>
+                <span>{point.label}</span>
+                <h3>{point.title}</h3>
+                <p>{point.body}</p>
+                <small>{`0${index + 1}`}</small>
               </article>
             ))}
+          </div>
+
+          <div className="press-bottom-card">
+            <div>
+              <span>Credibility language</span>
+              <h3>Ready for decks, press intros, and Korean brand conversations.</h3>
+            </div>
+            <div className="press-signal-row">
+              {signals.map((signal) => (
+                <strong key={signal}>{signal}</strong>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       <style>{`
-        .press-lines {
+        .press-section {
+          position: relative;
+          min-height: 100svh;
+          overflow: hidden;
+          background: var(--color-bg-primary);
+          color: white;
+          isolation: isolate;
+        }
+
+        .press-bg-image {
+          pointer-events: none;
+          object-fit: cover;
+          opacity: 0.58;
+        }
+
+        .press-overlay {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background:
+            linear-gradient(180deg, rgba(10,4,5,0.92), rgba(10,4,5,0.58) 46%, rgba(10,4,5,0.93)),
+            radial-gradient(circle at 18% 20%, rgba(242,95,43,0.2), transparent 32%),
+            radial-gradient(circle at 82% 72%, rgba(34,197,94,0.13), transparent 34%);
+        }
+
+        .press-grid {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          opacity: 0.055;
           background-image:
-            linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
-            linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+            linear-gradient(rgba(255,255,255,0.13) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.13) 1px, transparent 1px);
           background-size: 54px 54px;
-          mask-image: radial-gradient(circle at center, black, transparent 76%);
-          animation: pressLines 28s linear infinite;
+          mask-image: radial-gradient(circle at center, black, transparent 78%);
+          animation: pressGrid 30s linear infinite;
         }
 
-        .press-rise,
-        .press-card {
-          animation: pressRise 620ms ease both;
+        .press-container {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          min-height: 100svh;
+          align-items: center;
         }
 
-        @keyframes pressLines {
+        .press-shell {
+          width: 100%;
+          max-width: 1260px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: minmax(0, 0.86fr) minmax(0, 1fr);
+          grid-template-areas:
+            'copy score'
+            'proof proof'
+            'bottom bottom';
+          gap: 24px;
+          padding-top: 70px;
+          padding-bottom: 70px;
+        }
+
+        .press-copy {
+          grid-area: copy;
+          align-self: end;
+          animation: pressRise 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .press-kicker {
+          display: inline-flex;
+          border: 1px solid rgba(242,95,43,0.48);
+          border-radius: 999px;
+          background: rgba(242,95,43,0.12);
+          color: var(--color-accent-primary);
+          padding: 7px 13px;
+          font-size: 10px;
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: 0.24em;
+          text-transform: uppercase;
+        }
+
+        .press-copy h2 {
+          max-width: 660px;
+          margin: 18px 0 0;
+          color: white;
+          font-size: clamp(34px, 4.2vw, 56px) !important;
+          line-height: 1;
+          font-weight: 700 !important;
+          letter-spacing: -0.035em;
+        }
+
+        .press-copy p {
+          max-width: 610px;
+          margin: 20px 0 0;
+          color: rgba(255,255,255,0.66);
+          font-size: 16px;
+          line-height: 1.58;
+          font-weight: 700;
+        }
+
+        .press-scorecard {
+          grid-area: score;
+          align-self: end;
+          border: 1px solid rgba(255,255,255,0.13);
+          border-radius: 30px;
+          background:
+            linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+            rgba(10,4,5,0.62);
+          padding: 24px;
+          box-shadow: 0 30px 92px rgba(0,0,0,0.38);
+          backdrop-filter: blur(20px);
+          animation: pressRise 760ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+        }
+
+        .press-scorecard-top {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 18px;
+          margin-bottom: 18px;
+        }
+
+        .press-scorecard-top span,
+        .press-bottom-card span,
+        .press-proof-card > span {
+          color: var(--color-accent-primary);
+          font-size: 10px;
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+        }
+
+        .press-scorecard-top strong {
+          display: block;
+          margin-top: 8px;
+          color: white;
+          font-size: 32px;
+          line-height: 0.96;
+          font-weight: 700;
+          letter-spacing: -0.03em;
+        }
+
+        .press-scorecard-top em {
+          border: 1px solid rgba(244,183,58,0.3);
+          border-radius: 999px;
+          background: rgba(244,183,58,0.1);
+          color: var(--color-accent-yellow);
+          padding: 8px 12px;
+          font-style: normal;
+          font-size: 11px;
+          font-weight: 900;
+          letter-spacing: 0.12em;
+          white-space: nowrap;
+        }
+
+        .press-stats {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .press-stat {
+          min-height: 114px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          border: 1px solid rgba(255,255,255,0.11);
+          border-radius: 20px;
+          background: rgba(255,255,255,0.052);
+          padding: 15px;
+          animation: pressRise 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .press-stat strong {
+          color: var(--color-accent-yellow);
+          font-size: clamp(25px, 2.6vw, 36px);
+          line-height: 0.9;
+          font-weight: 900;
+          letter-spacing: -0.04em;
+        }
+
+        .press-stat span {
+          display: block;
+          margin-top: 10px;
+          color: rgba(255,255,255,0.5);
+          font-size: 10px;
+          line-height: 1.25;
+          font-weight: 900;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .press-proof-grid {
+          grid-area: proof;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 14px;
+        }
+
+        .press-proof-card {
+          position: relative;
+          min-height: 230px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 26px;
+          background:
+            radial-gradient(circle at 20% 0%, rgba(242,95,43,0.12), transparent 40%),
+            rgba(10,4,5,0.58);
+          padding: 24px;
+          box-shadow: 0 24px 72px rgba(0,0,0,0.28);
+          backdrop-filter: blur(18px);
+          animation: pressRise 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .press-proof-card h3 {
+          max-width: 330px;
+          margin: 24px 0 0;
+          color: white;
+          font-size: 28px;
+          line-height: 0.98;
+          font-weight: 700;
+          letter-spacing: -0.03em;
+        }
+
+        .press-proof-card p {
+          max-width: 360px;
+          margin: 16px 0 0;
+          color: rgba(255,255,255,0.62);
+          font-size: 14px;
+          line-height: 1.48;
+          font-weight: 700;
+        }
+
+        .press-proof-card small {
+          position: absolute;
+          right: 20px;
+          top: 18px;
+          color: rgba(255,255,255,0.05);
+          font-size: 74px;
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: -0.08em;
+        }
+
+        .press-bottom-card {
+          grid-area: bottom;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 26px;
+          background:
+            linear-gradient(135deg, rgba(244,183,58,0.1), rgba(255,255,255,0.035), rgba(34,197,94,0.07)),
+            rgba(10,4,5,0.62);
+          padding: 24px;
+          box-shadow: 0 24px 72px rgba(0,0,0,0.28);
+          backdrop-filter: blur(18px);
+          animation: pressRise 760ms cubic-bezier(0.16, 1, 0.3, 1) 320ms both;
+        }
+
+        .press-bottom-card h3 {
+          max-width: 520px;
+          margin: 10px 0 0;
+          color: white;
+          font-size: 28px;
+          line-height: 1;
+          font-weight: 700;
+          letter-spacing: -0.03em;
+        }
+
+        .press-signal-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          gap: 10px;
+        }
+
+        .press-signal-row strong {
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 999px;
+          background: rgba(255,255,255,0.055);
+          color: rgba(255,255,255,0.76);
+          padding: 11px 14px;
+          font-size: 12px;
+          line-height: 1;
+          font-weight: 750;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        @keyframes pressGrid {
           from { transform: translate3d(0, 0, 0); }
           to { transform: translate3d(-54px, -54px, 0); }
         }
 
         @keyframes pressRise {
-          from { opacity: 0; transform: translateY(18px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; transform: translate3d(0, 22px, 0) scale(0.985); filter: blur(5px); }
+          to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+        }
+
+        @media (max-width: 1180px) {
+          .press-shell {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+              'copy'
+              'score'
+              'proof'
+              'bottom';
+            max-width: 900px;
+            gap: 18px;
+          }
+
+          .press-copy,
+          .press-scorecard {
+            align-self: auto;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .press-container {
+            min-height: 100svh;
+            align-items: flex-start;
+          }
+
+          .press-bg-image {
+            opacity: 0.46;
+          }
+
+          .press-shell {
+            display: block;
+            padding-top: 58px;
+            padding-bottom: 86px;
+          }
+
+          .press-kicker {
+            padding: 6px 10px;
+            font-size: 8.5px;
+            letter-spacing: 0.18em;
+          }
+
+          .press-copy h2 {
+            max-width: 390px;
+            margin-top: 13px;
+            font-size: 34px !important;
+            line-height: 1;
+            font-weight: 700 !important;
+            letter-spacing: -0.03em;
+          }
+
+          .press-copy p {
+            max-width: 410px;
+            margin-top: 12px;
+            font-size: 11.5px;
+            line-height: 1.42;
+          }
+
+          .press-scorecard {
+            margin-top: 15px;
+            border-radius: 22px;
+            padding: 14px;
+          }
+
+          .press-scorecard-top {
+            align-items: center;
+            margin-bottom: 10px;
+          }
+
+          .press-scorecard-top strong {
+            margin-top: 6px;
+            font-size: 22px;
+          }
+
+          .press-scorecard-top em {
+            padding: 6px 8px;
+            font-size: 8px;
+          }
+
+          .press-scorecard-top span,
+          .press-bottom-card span,
+          .press-proof-card > span {
+            font-size: 8.5px;
+            letter-spacing: 0.18em;
+          }
+
+          .press-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px;
+          }
+
+          .press-stat {
+            min-height: 64px;
+            border-radius: 15px;
+            padding: 10px 11px;
+          }
+
+          .press-stat strong {
+            font-size: 22px;
+          }
+
+          .press-stat span {
+            margin-top: 6px;
+            font-size: 7.4px;
+            letter-spacing: 0.1em;
+          }
+
+          .press-proof-grid {
+            margin-top: 9px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 7px;
+          }
+
+          .press-proof-card {
+            min-height: 126px;
+            border-radius: 16px;
+            padding: 12px 10px 11px;
+          }
+
+          .press-proof-card h3 {
+            max-width: 118px;
+            margin-top: 10px;
+            font-size: 12.4px;
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+          }
+
+          .press-proof-card p {
+            display: block;
+            max-width: 118px;
+            margin-top: 7px;
+            color: rgba(255,255,255,0.56);
+            font-size: 9.4px;
+            line-height: 1.25;
+            font-weight: 750;
+          }
+
+          .press-proof-card small {
+            right: 9px;
+            top: 8px;
+            font-size: 34px;
+          }
+
+          .press-bottom-card {
+            margin-top: 10px;
+            display: block;
+            border-radius: 18px;
+            padding: 13px;
+          }
+
+          .press-bottom-card h3 {
+            max-width: 380px;
+            margin-top: 8px;
+            font-size: 16px;
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+          }
+
+          .press-signal-row {
+            justify-content: flex-start;
+            gap: 6px;
+            margin-top: 12px;
+          }
+
+          .press-signal-row strong {
+            padding: 8px 9px;
+            font-size: 8px;
+            letter-spacing: 0.06em;
+          }
+
+          .press-copy {
+            animation-name: pressMobileCopy;
+          }
+
+          .press-scorecard {
+            animation-name: pressMobilePanel;
+          }
+
+          .press-stat,
+          .press-proof-card {
+            animation-name: pressMobilePop;
+          }
+        }
+
+        @media (max-width: 390px) {
+          .press-copy h2 {
+            font-size: 31px !important;
+          }
+
+          .press-shell {
+            padding-top: 52px;
+          }
+
+          .press-proof-card h3 {
+            font-size: 11.6px;
+          }
+
+          .press-proof-card {
+            min-height: 120px;
+          }
+
+          .press-proof-card p {
+            font-size: 8.8px;
+          }
+
+          .press-signal-row strong {
+            font-size: 7.4px;
+            padding: 7px 8px;
+          }
+        }
+
+        @media (max-height: 780px) and (min-width: 1024px) {
+          .press-shell {
+            padding-top: 44px;
+            padding-bottom: 44px;
+          }
+
+          .press-proof-card {
+            min-height: 198px;
+          }
+
+          .press-bottom-card {
+            padding: 18px 20px;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .press-lines,
-          .press-rise,
-          .press-card {
+          .press-grid,
+          .press-copy,
+          .press-scorecard,
+          .press-stat,
+          .press-proof-card,
+          .press-bottom-card {
             animation: none;
           }
+        }
+
+        @keyframes pressMobileCopy {
+          from { opacity: 0; transform: translate3d(-18px, 0, 0); clip-path: inset(0 18% 0 0); }
+          to { opacity: 1; transform: translate3d(0, 0, 0); clip-path: inset(0); }
+        }
+
+        @keyframes pressMobilePanel {
+          from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.96); clip-path: inset(18% 0 0 0 round 22px); }
+          to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); clip-path: inset(0 round 22px); }
+        }
+
+        @keyframes pressMobilePop {
+          from { opacity: 0; transform: translate3d(0, 10px, 0) scale(0.92) rotate(-1deg); }
+          to { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(0); }
         }
       `}</style>
     </section>

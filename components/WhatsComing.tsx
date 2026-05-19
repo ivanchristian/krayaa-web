@@ -1,5 +1,7 @@
 'use client';
 
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+
 const categories = [
   {
     kicker: 'K-Beauty',
@@ -40,7 +42,48 @@ const futureCategories = [
   { label: 'Events', icon: '🎟️' },
 ];
 
+const mobileLoopCopies = 101;
+const mobileLoopMiddleCopy = Math.floor(mobileLoopCopies / 2);
+const loopedCategories = Array.from({ length: mobileLoopCopies }, () => categories).flat();
+
 export default function WhatsComing() {
+  const [activeMobileCard, setActiveMobileCard] = useState(categories.length * mobileLoopMiddleCopy + 1);
+  const cardRowRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const shouldAnimateScrollRef = useRef(false);
+
+  const centerMobileCard = useCallback((index: number, smooth = true) => {
+    const row = cardRowRef.current;
+    const card = cardRefs.current[index];
+
+    if (!row || !card) {
+      return;
+    }
+
+    const left = card.offsetLeft - (row.clientWidth - card.offsetWidth) / 2;
+
+    if (smooth) {
+      row.classList.add('whats-coming-card-row-smooth');
+    } else {
+      row.classList.remove('whats-coming-card-row-smooth');
+    }
+
+    row.scrollTo({ left, behavior: smooth ? 'smooth' : 'auto' });
+  }, []);
+
+  useLayoutEffect(() => {
+    centerMobileCard(activeMobileCard, shouldAnimateScrollRef.current);
+    shouldAnimateScrollRef.current = false;
+  }, [activeMobileCard, centerMobileCard]);
+
+  const moveMobileCard = (direction: 'previous' | 'next') => {
+    const nextIndex = direction === 'previous' ? activeMobileCard - 1 : activeMobileCard + 1;
+
+    shouldAnimateScrollRef.current = true;
+    setActiveMobileCard(nextIndex);
+    centerMobileCard(nextIndex);
+  };
+
   return (
     <section
       id="whats-coming"
@@ -57,8 +100,8 @@ export default function WhatsComing() {
 
       <div className="h-8 shrink-0 md:h-10" aria-hidden="true" />
 
-      <div className="container-wide relative z-10 flex flex-1 flex-col justify-start pb-8 pt-3 sm:pb-10 sm:pt-4 md:pb-10 md:pt-5 lg:pb-12 lg:pt-6">
-        <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-5 md:gap-7">
+      <div className="container-wide relative z-10 flex flex-1 flex-col justify-center pb-8 pt-3 sm:pb-10 sm:pt-4 md:pb-10 md:pt-5 lg:pb-12 lg:pt-6">
+        <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-5 md:-translate-y-5 md:gap-7 lg:-translate-y-6">
           <div className="grid items-end gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
             <div className="reveal-rise">
               <span className="inline-flex rounded-full border border-[var(--color-accent-primary)]/35 bg-[var(--color-accent-primary)]/10 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.28em] text-[var(--color-accent-primary)]" style={{ padding: '0.35rem', marginBottom: '0.5rem' }}>
@@ -75,13 +118,43 @@ export default function WhatsComing() {
             </p>
           </div>
 
-          <div className="whats-coming-card-row grid auto-cols-[minmax(260px,82%)] grid-flow-col gap-4 overflow-x-auto pb-3 snap-x snap-mandatory md:auto-cols-auto md:grid-flow-row md:grid-cols-3 md:overflow-visible md:pb-0 md:snap-none lg:gap-5">
-            {categories.map((cat, index) => (
+          <div className="relative -mx-6 sm:-mx-8 md:mx-0">
+            <button
+              type="button"
+              aria-label="Previous category"
+              className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-xl font-black text-white shadow-[0_12px_34px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:border-white/20 hover:bg-white/10 sm:left-5 md:hidden"
+              onClick={() => moveMobileCard('previous')}
+            >
+              ‹
+            </button>
+
+            <button
+              type="button"
+              aria-label="Next category"
+              className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/70 text-xl font-black text-white shadow-[0_12px_34px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:border-white/20 hover:bg-white/10 sm:right-5 md:hidden"
+              onClick={() => moveMobileCard('next')}
+            >
+              ›
+            </button>
+
+            <div ref={cardRowRef} className="whats-coming-card-row grid auto-cols-[70%] grid-flow-col gap-4 overflow-x-auto px-[15%] pb-3 snap-x snap-mandatory md:auto-cols-auto md:grid-flow-row md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 md:snap-none lg:gap-5">
+            {loopedCategories.map((cat, index) => {
+              const originalIndex = index % categories.length;
+              const isDesktopCard =
+                index >= categories.length * mobileLoopMiddleCopy &&
+                index < categories.length * (mobileLoopMiddleCopy + 1);
+
+              return (
               <article
-                key={cat.title}
+                key={`${cat.title}-${index}`}
+                ref={(node) => {
+                  cardRefs.current[index] = node;
+                }}
                 className={[
                   'reveal-grow group relative min-h-[270px] snap-center overflow-hidden rounded-lg border border-white/[0.09] bg-[rgba(10,4,5,0.76)] py-6 pl-7 pr-7 shadow-[0_24px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl transition duration-500 hover:-translate-y-1.5 hover:border-white/20 sm:py-7 sm:pl-8 sm:pr-8 md:min-h-[300px] md:pl-7 md:pr-7 lg:min-h-[314px] lg:py-8 lg:pl-8 lg:pr-8',
-                  index === 0 ? 'reveal-delay-1' : index === 1 ? 'reveal-delay-2' : 'reveal-delay-3',
+                  activeMobileCard === index ? 'border-white/16' : 'md:border-white/[0.09]',
+                  isDesktopCard ? '' : 'md:hidden',
+                  originalIndex === 0 ? 'reveal-delay-1' : originalIndex === 1 ? 'reveal-delay-2' : 'reveal-delay-3',
                 ].join(' ')}
                 style={{
                   boxShadow: `0 24px 70px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.04)`,
@@ -136,7 +209,9 @@ export default function WhatsComing() {
                   </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
+            </div>
           </div>
 
           <div
@@ -149,12 +224,12 @@ export default function WhatsComing() {
               <p className="text-center text-[12px] font-black uppercase tracking-[0.32em] text-[var(--color-text-secondary)] sm:text-[13px]">
                 More categories planned
               </p>
-              <div className="whats-coming-future-row mx-auto flex w-full max-w-[980px] items-center justify-center gap-3 overflow-x-auto px-1 sm:gap-4">
+              <div className="whats-coming-future-row mx-auto grid w-full max-w-[980px] grid-cols-2 items-center justify-center gap-3 px-1 sm:gap-4 md:flex md:flex-nowrap md:overflow-visible">
                 {futureCategories.map((item, index) => (
                   <span
                     key={item.label}
                     className={[
-                      'reveal-pop group inline-flex min-h-14 min-w-[158px] shrink-0 items-center justify-center gap-3 rounded-full border border-white/10 bg-[rgba(10,4,5,0.55)] px-5 py-3 text-[14px] font-bold leading-none text-white/90 shadow-[0_12px_34px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.075] sm:min-h-16 sm:min-w-[180px] sm:px-6 sm:text-[15px] lg:min-w-[196px]',
+                      'reveal-pop group inline-flex min-h-14 w-full min-w-0 shrink-0 items-center justify-center gap-3 rounded-full border border-white/10 bg-[rgba(10,4,5,0.55)] px-4 py-3 text-[14px] font-bold leading-none text-white/90 shadow-[0_12px_34px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.075] sm:min-h-16 sm:px-5 sm:text-[15px] md:w-auto md:min-w-[180px] lg:min-w-[196px]',
                       index === 0 ? 'reveal-delay-2' : index === 1 ? 'reveal-delay-3' : index === 2 ? 'reveal-delay-4' : 'reveal-delay-5',
                     ].join(' ')}
                   >
@@ -182,6 +257,10 @@ export default function WhatsComing() {
 
         .whats-coming-card-row {
           scrollbar-width: none;
+        }
+
+        .whats-coming-card-row-smooth {
+          scroll-behavior: smooth;
         }
 
         .whats-coming-card-row::-webkit-scrollbar {

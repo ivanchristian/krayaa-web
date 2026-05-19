@@ -64,100 +64,272 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[linear-gradient(180deg,#100504_0%,#070203_36%,#070203_100%)] text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(242,95,43,0.22),transparent_24%),radial-gradient(circle_at_84%_6%,rgba(244,183,58,0.1),transparent_28%)]" />
-      <div className="footer-grid pointer-events-none absolute inset-0 opacity-[0.075]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(242,95,43,0.55),rgba(244,183,58,0.28),transparent)]" />
+    <footer className="site-footer">
+      <div className="footer-bg" />
+      <div className="footer-line" />
 
-      <div className="container-wide relative z-10 py-10 sm:py-12 lg:py-14">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.35fr] lg:gap-16 xl:gap-20">
-          <div className="footer-rise max-w-xl">
-            <a href="#hero" className="inline-flex text-[28px] font-black leading-none tracking-[-0.045em] text-[var(--color-accent-primary)] sm:text-[32px]">
-              KRAYAA
-            </a>
-            <p className="mt-4 max-w-md text-[14px] leading-[1.7] text-white/62 sm:text-[15px]">
-              Authentic Korean culture commerce for India. Verified supply, creator-led drops, and a launch built for people who already love Korea.
-            </p>
+      <div className="footer-container">
+        <div className="footer-brand footer-rise">
+          <a href="#hero" className="footer-logo">
+            KRAYAA
+          </a>
+          <p>Authentic Korean culture commerce for India. Verified supply, creator-led drops, and a launch built for people who already love Korea.</p>
 
-            <div className="mt-5 flex flex-wrap gap-2.5">
-              {['Q3 2026', 'India first', 'Seoul sourced'].map((item) => (
-                <span key={item} className="rounded-full border border-white/10 bg-white/[0.055] px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.15em] text-white/56 shadow-[0_14px_34px_rgba(0,0,0,0.22)]">
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-6 max-w-lg rounded-xl border border-[var(--color-accent-primary)]/20 bg-[rgba(242,95,43,0.075)] p-4 shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-md">
-              <div className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--color-accent-primary)]">Pre-launch note</div>
-              <p className="mt-2.5 text-[13px] leading-[1.6] text-white/56">
-                Krayaa is currently preparing buyer access, creator partnerships, and Korean brand onboarding for the Q3 2026 launch window.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid gap-8 sm:grid-cols-3 lg:pt-1">
-            {footerGroups.map((group, groupIndex) => (
-              <div key={group.title} className="footer-rise" style={{ animationDelay: `${groupIndex * 80}ms` }}>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.24em] text-white/40">{group.title}</h3>
-                <ul className="mt-4 grid gap-3.5">
-                  {group.links.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        target={link.external ? '_blank' : undefined}
-                        rel={link.external ? 'noopener noreferrer' : undefined}
-                        className="group inline-flex items-center gap-2.5 text-[14px] font-semibold text-white/62 transition hover:text-white"
-                      >
-                        {link.external ? (
-                          <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-white/[0.045] text-white/56 transition group-hover:border-[var(--color-accent-primary)]/45 group-hover:text-[var(--color-accent-primary)]">
-                            <SocialIcon label={link.label} />
-                          </span>
-                        ) : null}
-                        <span>{link.label}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className="footer-tags">
+            {['Q3 2026', 'India first', 'Seoul sourced'].map((item) => (
+              <span key={item}>{item}</span>
             ))}
           </div>
         </div>
 
-        <div className="my-8 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent)] lg:my-10" />
+        <div className="footer-note footer-rise">
+          <span>Pre-launch note</span>
+          <strong>Korea drops first to the list.</strong>
+          <p>Krayaa is preparing buyer access, creator partnerships, and Korean brand onboarding for the Q3 2026 launch window.</p>
+        </div>
 
-        <div className="footer-rise flex flex-col gap-4 text-[12px] text-white/42 md:flex-row md:items-center md:justify-between">
+        <div className="footer-links">
+          {footerGroups.map((group, groupIndex) => (
+            <div key={group.title} className="footer-group footer-rise" style={{ animationDelay: `${groupIndex * 70}ms` }}>
+              <h3>{group.title}</h3>
+              <ul>
+                {group.links.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+                      {link.external ? (
+                        <span className="footer-social">
+                          <SocialIcon label={link.label} />
+                        </span>
+                      ) : null}
+                      <span>{link.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="footer-bottom footer-rise">
           <p>Copyright {currentYear} Krayaa. All rights reserved.</p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <div>
             {legalLinks.map((link) => (
-              <a key={link.label} href={link.href} className="transition hover:text-white">
+              <a key={link.label} href={link.href}>
                 {link.label}
               </a>
             ))}
           </div>
         </div>
-
-        <div className="footer-rise mt-6 rounded-xl border border-white/10 bg-white/[0.04] p-4 text-center text-[12px] font-semibold leading-[1.55] text-white/44 shadow-[0_20px_70px_rgba(0,0,0,0.24)] backdrop-blur-md sm:p-5">
-          Built for K-culture lovers in India, Korean brands entering India, and creators ready to host what fans actually want.
-        </div>
       </div>
 
       <style>{`
-        .footer-grid {
+        .site-footer {
+          position: relative;
+          overflow: hidden;
+          background: #070203;
+          color: white;
+          padding: 58px 0 34px;
+          isolation: isolate;
+        }
+
+        .footer-bg {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background:
+            linear-gradient(180deg, rgba(7,2,3,0.88), rgba(7,2,3,0.96)),
+            radial-gradient(circle at 15% 0%, rgba(242,95,43,0.2), transparent 28%),
+            radial-gradient(circle at 78% 6%, rgba(244,183,58,0.12), transparent 30%),
+            linear-gradient(90deg, rgba(242,95,43,0.08), transparent 34%, rgba(244,183,58,0.05));
+        }
+
+        .footer-bg::after {
+          content: '';
+          position: absolute;
+          inset: -20%;
+          opacity: 0.075;
           background-image:
-            linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-          background-size: 42px 42px;
-          mask-image: radial-gradient(circle at center, black, transparent 78%);
-          animation: footerGrid 30s linear infinite;
+            linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+          background-size: 46px 46px;
+          mask-image: radial-gradient(circle at center, black, transparent 72%);
+          animation: footerGrid 32s linear infinite;
+        }
+
+        .footer-line {
+          position: absolute;
+          inset: 0 0 auto;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(242,95,43,0.58), rgba(244,183,58,0.28), transparent);
+        }
+
+        .footer-container {
+          position: relative;
+          z-index: 2;
+          width: min(1220px, calc(100% - 48px));
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(260px, 0.66fr) minmax(480px, 1fr);
+          gap: 42px;
+          align-items: start;
+        }
+
+        .footer-logo {
+          display: inline-flex;
+          color: var(--color-accent-primary);
+          font-size: 28px;
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: -0.045em;
+        }
+
+        .footer-brand p {
+          margin: 16px 0 0;
+          max-width: 430px;
+          color: rgba(255,255,255,0.62);
+          font-size: 14px;
+          line-height: 1.72;
+          font-weight: 600;
+        }
+
+        .footer-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 18px;
+        }
+
+        .footer-tags span {
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 999px;
+          background: rgba(255,255,255,0.055);
+          color: rgba(255,255,255,0.58);
+          padding: 8px 10px;
+          font-size: 9px;
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+        }
+
+        .footer-note {
+          border: 1px solid rgba(242,95,43,0.22);
+          border-radius: 22px;
+          background:
+            linear-gradient(145deg, rgba(242,95,43,0.12), rgba(244,183,58,0.055)),
+            rgba(10,4,5,0.5);
+          padding: 20px;
+          box-shadow: 0 24px 80px rgba(0,0,0,0.34);
+          backdrop-filter: blur(18px);
+        }
+
+        .footer-note span,
+        .footer-group h3 {
+          color: var(--color-accent-primary);
+          font-size: 10px;
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+        }
+
+        .footer-note strong {
+          display: block;
+          margin-top: 11px;
+          color: white;
+          font-size: 23px;
+          line-height: 1.05;
+          font-weight: 700;
+          letter-spacing: -0.025em;
+        }
+
+        .footer-note p {
+          margin: 12px 0 0;
+          color: rgba(255,255,255,0.56);
+          font-size: 13px;
+          line-height: 1.62;
+          font-weight: 650;
+        }
+
+        .footer-links {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+
+        .footer-group ul {
+          display: grid;
+          gap: 13px;
+          margin-top: 17px;
+          list-style: none;
+        }
+
+        .footer-group a {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          color: rgba(255,255,255,0.62);
+          font-size: 14px;
+          font-weight: 750;
+          transition: color 180ms ease, transform 180ms ease;
+        }
+
+        .footer-group a:hover {
+          color: white;
+          transform: translateX(2px);
+        }
+
+        .footer-social {
+          display: grid;
+          place-items: center;
+          width: 30px;
+          height: 30px;
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 999px;
+          background: rgba(255,255,255,0.05);
+          color: rgba(255,255,255,0.58);
+          transition: border-color 180ms ease, color 180ms ease;
+        }
+
+        .footer-group a:hover .footer-social {
+          border-color: rgba(242,95,43,0.45);
+          color: var(--color-accent-primary);
+        }
+
+        .footer-bottom {
+          grid-column: 1 / -1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          margin-top: 12px;
+          padding-top: 24px;
+          color: rgba(255,255,255,0.4);
+          font-size: 12px;
+          font-weight: 650;
+        }
+
+        .footer-bottom div {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 18px;
+        }
+
+        .footer-bottom a {
+          transition: color 180ms ease;
+        }
+
+        .footer-bottom a:hover {
+          color: white;
         }
 
         .footer-rise {
-          animation: footerRise 620ms ease both;
+          animation: footerRise 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         @keyframes footerGrid {
-          from { transform: translate3d(0, 0, 0); }
-          to { transform: translate3d(-42px, -42px, 0); }
+          to { transform: translate3d(-46px, -46px, 0); }
         }
 
         @keyframes footerRise {
@@ -165,8 +337,109 @@ export default function Footer() {
           to { opacity: 1; transform: translateY(0); }
         }
 
+        @media (max-width: 1080px) {
+          .footer-container {
+            grid-template-columns: 1fr;
+            gap: 28px;
+          }
+
+          .footer-links {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+
+        @media (max-width: 640px) {
+          .site-footer {
+            padding: 30px 0 82px;
+          }
+
+          .footer-container {
+            width: min(100% - 38px, 430px);
+            gap: 18px;
+          }
+
+          .footer-logo {
+            font-size: 25px;
+          }
+
+          .footer-brand p {
+            margin-top: 11px;
+            font-size: 11.8px;
+            line-height: 1.5;
+          }
+
+          .footer-tags {
+            margin-top: 13px;
+            gap: 7px;
+          }
+
+          .footer-tags span {
+            padding: 7px 9px;
+            font-size: 8px;
+          }
+
+          .footer-note {
+            padding: 14px;
+            border-radius: 17px;
+          }
+
+          .footer-note strong {
+            margin-top: 9px;
+            font-size: 17px;
+          }
+
+          .footer-note p {
+            margin-top: 8px;
+            font-size: 11.4px;
+            line-height: 1.45;
+          }
+
+          .footer-links {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 18px;
+          }
+
+          .footer-group:last-child {
+            grid-column: 1 / -1;
+          }
+
+          .footer-group ul {
+            gap: 9px;
+            margin-top: 12px;
+          }
+
+          .footer-group a {
+            font-size: 11.8px;
+          }
+
+          .footer-group h3,
+          .footer-note span {
+            font-size: 8.8px;
+            letter-spacing: 0.18em;
+          }
+
+          .footer-social {
+            width: 27px;
+            height: 27px;
+          }
+
+          .footer-bottom {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 2px;
+            padding-top: 18px;
+            padding-bottom: 8px;
+            font-size: 10.8px;
+          }
+
+          .footer-bottom div {
+            gap: 14px;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
-          .footer-grid,
+          .footer-bg::after,
           .footer-rise {
             animation: none;
           }

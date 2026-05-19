@@ -201,6 +201,8 @@ export default function VerticalCategoryCarousel({ items }: { items: CarouselIte
 
   if (!safeItems.length) return null;
 
+  const showBackToTop = activeIndex > 0;
+
   return (
     <div ref={rootRef} className="relative bg-[var(--color-bg-primary)]" aria-label="Vertical page carousel">
       <div className="sr-only">Scroll the page vertically to move through sections.</div>
@@ -278,6 +280,87 @@ export default function VerticalCategoryCarousel({ items }: { items: CarouselIte
           </button>
         </div>
       </div>
+
+      <button
+        type="button"
+        onClick={() => scrollToIndex(0)}
+        className={`back-to-top-button ${showBackToTop && isInCarousel ? 'is-visible' : ''}`}
+        aria-label="Back to top"
+      >
+        <span aria-hidden="true">&uarr;</span>
+        <strong>Top</strong>
+      </button>
+
+      <style>{`
+        .back-to-top-button {
+          position: fixed;
+          left: 22px;
+          bottom: 22px;
+          z-index: 60;
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+          min-height: 44px;
+          border: 1px solid rgba(242,95,43,0.32);
+          border-radius: 999px;
+          background:
+            linear-gradient(135deg, rgba(242,95,43,0.18), rgba(244,183,58,0.08)),
+            rgba(7,2,3,0.74);
+          color: white;
+          padding: 0 15px 0 10px;
+          box-shadow: 0 18px 56px rgba(0,0,0,0.44), 0 0 0 1px rgba(255,255,255,0.05) inset;
+          backdrop-filter: blur(18px);
+          cursor: pointer;
+          opacity: 0;
+          pointer-events: none;
+          transform: translate3d(0, 12px, 0) scale(0.94);
+          transition: opacity 220ms ease, transform 220ms ease, border-color 220ms ease, background 220ms ease;
+        }
+
+        .back-to-top-button.is-visible {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        .back-to-top-button:hover {
+          border-color: rgba(242,95,43,0.62);
+          background:
+            linear-gradient(135deg, rgba(242,95,43,0.28), rgba(244,183,58,0.13)),
+            rgba(7,2,3,0.84);
+          transform: translate3d(0, -2px, 0) scale(1.01);
+        }
+
+        .back-to-top-button span {
+          display: grid;
+          place-items: center;
+          width: 26px;
+          height: 26px;
+          border-radius: 999px;
+          background: var(--color-accent-primary);
+          color: white;
+          font-size: 15px;
+          font-weight: 900;
+          line-height: 1;
+        }
+
+        .back-to-top-button strong {
+          font-size: 11px;
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+        }
+
+        @media (max-width: 640px) {
+          .back-to-top-button {
+            left: 18px;
+            bottom: 18px;
+            min-height: 42px;
+            padding-right: 13px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
