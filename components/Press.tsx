@@ -421,7 +421,7 @@ export default function Press() {
 
           .press-shell {
             display: block;
-            padding-top: 58px;
+            padding-top: 38px;
             padding-bottom: 86px;
           }
 
@@ -579,7 +579,7 @@ export default function Press() {
           }
 
           .press-shell {
-            padding-top: 52px;
+            padding-top: 34px;
           }
 
           .press-proof-card h3 {
@@ -612,6 +612,13 @@ export default function Press() {
 
           .press-bottom-card {
             padding: 18px 20px;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .press-shell {
+            padding-top: 24px !important;
+            transform: translateY(-8px);
           }
         }
 

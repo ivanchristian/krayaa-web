@@ -189,7 +189,7 @@ export default function WhatsComing() {
                       {cat.kicker}
                     </p>
                     <br />
-                    <h3 className="max-w-[320px] text-[20px] font-black leading-[1.08] tracking-[-0.032em] text-white sm:text-[22px] md:text-[20px] lg:text-[21px] xl:text-[22px]">
+                    <h3 className="max-w-[320px] text-[20px] font-semibold leading-[1.08] tracking-[-0.018em] text-white sm:text-[22px] md:text-[20px] lg:text-[21px] xl:text-[22px]" style={{ fontWeight: 650 }}>
                       {cat.title}
                     </h3>
                     <br />

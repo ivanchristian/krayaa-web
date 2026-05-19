@@ -111,7 +111,7 @@ function DesktopComparison({ pillar }: { pillar: (typeof pillars)[number] }) {
       >
         <div style={{ display: 'grid', gap: 16 }}>
           <StatusPill />
-          <h4 className="font-black tracking-[-0.035em] text-white" style={{ fontSize: 24, lineHeight: 1.1 }}>
+          <h4 className="font-semibold tracking-[-0.018em] text-white" style={{ fontSize: 24, lineHeight: 1.1, fontWeight: 650 }}>
             The current way feels uncertain.
           </h4>
         </div>
@@ -126,7 +126,7 @@ function DesktopComparison({ pillar }: { pillar: (typeof pillars)[number] }) {
       >
         <div style={{ display: 'grid', gap: 16 }}>
           <StatusPill good />
-          <h4 className="font-black tracking-[-0.04em]" style={{ fontSize: 28, lineHeight: 1.06 }}>
+          <h4 className="font-semibold tracking-[-0.018em]" style={{ fontSize: 28, lineHeight: 1.06, fontWeight: 650 }}>
             {pillar.headline}
           </h4>
         </div>
@@ -161,7 +161,7 @@ function MobilePillarCard({ pillar, onDetail }: { pillar: (typeof pillars)[numbe
                 <PillarIcon type={pillar.icon} />
               </span>
             </div>
-            <h3 className="text-[23px] font-black tracking-[-0.04em] text-white" style={{ lineHeight: 1.12 }}>{pillar.label}</h3>
+            <h3 className="text-[23px] font-semibold tracking-[-0.018em] text-white" style={{ lineHeight: 1.12, fontWeight: 650 }}>{pillar.label}</h3>
             <p className="line-clamp-2 text-[12.5px] font-semibold text-white/62" style={{ lineHeight: 1.7 }}>{pillar.headline}</p>
           </div>
 
@@ -207,7 +207,7 @@ function DetailModal({ pillar, onClose }: { pillar: (typeof pillars)[number]; on
           <p className="font-black uppercase text-[var(--color-accent-primary)]" style={{ fontSize: 10, letterSpacing: '0.22em', lineHeight: 1.2 }}>
             {pillar.number} / {pillar.label}
           </p>
-          <h3 className="font-black tracking-[-0.04em] text-white" style={{ marginTop: 9, fontSize: 24, lineHeight: 1.08 }}>
+          <h3 className="font-semibold tracking-[-0.018em] text-white" style={{ marginTop: 9, fontSize: 24, lineHeight: 1.08, fontWeight: 650 }}>
             {pillar.headline}
           </h3>
         </div>
@@ -319,7 +319,7 @@ export default function WhyKrayaa() {
                       <PillarIcon type={activePillar.icon} />
                     </span>
                   </div>
-                  <h3 className="font-black text-white" style={{ marginTop: 14, fontSize: 52, lineHeight: 0.96, letterSpacing: '-0.052em' }}>
+                  <h3 className="font-semibold text-white" style={{ marginTop: 14, fontSize: 52, lineHeight: 0.96, letterSpacing: '-0.025em', fontWeight: 650 }}>
                     {activePillar.label}
                   </h3>
                 </div>

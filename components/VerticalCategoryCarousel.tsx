@@ -204,7 +204,7 @@ export default function VerticalCategoryCarousel({ items }: { items: CarouselIte
   const showBackToTop = activeIndex > 0;
 
   return (
-    <div ref={rootRef} className="relative bg-[var(--color-bg-primary)]" aria-label="Vertical page carousel">
+    <div ref={rootRef} className="vertical-page-carousel relative bg-[var(--color-bg-primary)]" aria-label="Vertical page carousel">
       <div className="sr-only">Scroll the page vertically to move through sections.</div>
 
       {safeItems.map((item, index) => (
@@ -214,7 +214,7 @@ export default function VerticalCategoryCarousel({ items }: { items: CarouselIte
             slideRefs.current[index] = node;
           }}
           className={[
-            index === activeIndex ? 'carousel-slide-active' : 'carousel-slide-inactive',
+            index === activeIndex ? 'carousel-slide-active section-active' : 'carousel-slide-inactive',
             item.key === 'hero'
               ? 'min-h-[100svh] bg-[linear-gradient(180deg,#0a0405_0%,#0d0505_44%,#180706_78%,#0a0405_100%)] [scroll-snap-align:start] [&>section]:!min-h-[100svh] lg:h-[100svh] lg:overflow-hidden lg:[&>section]:!h-[100svh]'
               : item.key === 'footer'
@@ -340,24 +340,112 @@ export default function VerticalCategoryCarousel({ items }: { items: CarouselIte
           background: var(--color-accent-primary);
           color: white;
           font-size: 15px;
-          font-weight: 900;
+          font-weight: 700;
           line-height: 1;
         }
 
         .back-to-top-button strong {
           font-size: 11px;
           line-height: 1;
-          font-weight: 900;
+          font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
         }
 
+        .vertical-page-carousel button,
+        .vertical-page-carousel button *,
+        .vertical-page-carousel .btn,
+        .vertical-page-carousel .btn *,
+        .vertical-page-carousel a[href="#join"],
+        .vertical-page-carousel a[href="#join"] * {
+          font-weight: 600 !important;
+        }
+
+        .section-active > section:is(#vision, #creators, #brands, #press, #faq, #join) {
+          animation: sectionActiveFrame 1200ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+        }
+
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .vision-shell,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .fc-copy,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .fc-form-wrap,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .fb-copy,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .fb-form-wrap,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .press-copy,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .press-scorecard,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .press-proof-grid,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .press-bottom-card,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .faq-intro,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .faq-panel,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .final-copy,
+        .section-active section:is(#vision, #creators, #brands, #press, #faq, #join) .final-card {
+          animation: sectionActiveGrow 1280ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+        }
+
+        .section-active section:is(#creators, #brands, #press, #faq, #join) .fc-form-wrap,
+        .section-active section:is(#creators, #brands, #press, #faq, #join) .fb-form-wrap,
+        .section-active section:is(#creators, #brands, #press, #faq, #join) .press-scorecard,
+        .section-active section:is(#creators, #brands, #press, #faq, #join) .faq-panel,
+        .section-active section:is(#creators, #brands, #press, #faq, #join) .final-card {
+          animation-delay: 180ms !important;
+        }
+
+        .section-active footer,
+        .section-active .footer-shell {
+          animation: sectionActiveGrow 1280ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+        }
+
+        @keyframes sectionActiveFrame {
+          from {
+            opacity: 0.72;
+            transform: translate3d(0, 26px, 0) scale(0.992);
+            filter: saturate(0.88) blur(2px);
+          }
+          55% {
+            opacity: 1;
+            filter: saturate(1.08) blur(0);
+          }
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: saturate(1) blur(0);
+          }
+        }
+
+        @keyframes sectionActiveGrow {
+          from {
+            opacity: 0;
+            transform: translate3d(0, 34px, 0) scale(0.965);
+            filter: blur(8px);
+          }
+          60% {
+            opacity: 1;
+            filter: blur(0);
+          }
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: blur(0);
+          }
+        }
+
         @media (max-width: 640px) {
           .back-to-top-button {
-            left: 18px;
-            bottom: 18px;
-            min-height: 42px;
-            padding-right: 13px;
+            left: 16px;
+            bottom: 16px;
+            min-height: 30px;
+            gap: 5px;
+            padding: 0 9px 0 6px;
+          }
+
+          .back-to-top-button span {
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+          }
+
+          .back-to-top-button strong {
+            font-size: 8px;
+            letter-spacing: 0.1em;
           }
         }
       `}</style>

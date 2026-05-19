@@ -437,7 +437,7 @@ export default function FAQSection() {
 
           .faq-shell {
             display: block;
-            padding-top: 50px;
+            padding-top: 34px;
             padding-bottom: 92px;
           }
 
@@ -546,7 +546,7 @@ export default function FAQSection() {
 
         @media (max-width: 390px) {
           .faq-shell {
-            padding-top: 44px;
+            padding-top: 30px;
           }
 
           .faq-intro h2 {
@@ -573,6 +573,13 @@ export default function FAQSection() {
           .faq-item button {
             padding-top: 14px;
             padding-bottom: 14px;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .faq-shell {
+            padding-top: 22px !important;
+            transform: translateY(-8px);
           }
         }
 
