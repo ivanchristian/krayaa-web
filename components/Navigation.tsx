@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { trackKrayaaEvent } from '../lib/analytics';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,11 @@ export default function Navigation() {
                 ))}
               </div>
 
-              <a href="#join" className="btn btn-primary shrink-0 px-5 py-1.5 text-sm font-medium shadow-[0_8px_30px_rgba(242,95,43,0.18)] xl:px-6">
+              <a
+                href="#join"
+                onClick={() => trackKrayaaEvent('click_nav_join_waitlist', { source: 'desktop_nav' })}
+                className="btn btn-primary shrink-0 px-5 py-1.5 text-sm font-medium shadow-[0_8px_30px_rgba(242,95,43,0.18)] xl:px-6"
+              >
                 Join Waitlist
               </a>
             </div>
@@ -84,7 +89,10 @@ export default function Navigation() {
           <div className="mt-8 w-full sm:mt-10">
             <a
               href="#join"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                trackKrayaaEvent('click_nav_join_waitlist', { source: 'mobile_nav' });
+                setIsOpen(false);
+              }}
               className="btn btn-primary w-full justify-center py-1.5 text-base font-medium shadow-[0_10px_40px_rgba(242,95,43,0.25)] sm:text-lg"
             >
               Be first — Join the Waitlist

@@ -5,7 +5,9 @@ export function buildWhatsappUrl(message: string) {
 }
 
 export function redirectToWhatsapp(message: string) {
-  window.location.href = buildWhatsappUrl(message);
+  window.setTimeout(() => {
+    window.location.href = buildWhatsappUrl(message);
+  }, 180);
 }
 
 export function generalWhatsappMessage() {

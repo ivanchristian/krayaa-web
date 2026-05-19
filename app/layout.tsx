@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import PostHogAnalytics from '../components/PostHogAnalytics';
 import './globals.css';
 
 const inter = Inter({
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="overflow-x-hidden bg-[var(--color-bg-primary)] text-white antialiased selection:bg-[var(--color-accent-primary)] selection:text-white">{children}</body>
+      <body className="overflow-x-hidden bg-[var(--color-bg-primary)] text-white antialiased selection:bg-[var(--color-accent-primary)] selection:text-white">
+        <PostHogAnalytics />
+        {children}
+      </body>
     </html>
   );
 }

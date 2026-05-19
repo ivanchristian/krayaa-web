@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { trackKrayaaEvent } from '../lib/analytics';
 import { redirectToWhatsapp, waitlistWhatsappMessage } from '../lib/whatsapp';
 
 const audienceOptions = ['Buyer', 'Creator', 'Brand'];
@@ -14,6 +15,11 @@ export default function FinalCTA() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const eventName = `submit_waitlist_${audience.toLowerCase()}` as 'submit_waitlist_buyer' | 'submit_waitlist_creator' | 'submit_waitlist_brand';
+    trackKrayaaEvent(eventName, {
+      source: 'final_cta',
+      audience: audience.toLowerCase(),
+    });
     redirectToWhatsapp(waitlistWhatsappMessage(audience, email));
     setSubmitted(true);
     setEmail('');

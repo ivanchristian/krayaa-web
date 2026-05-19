@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { trackKrayaaEvent } from '../lib/analytics';
 import { brandPartnershipWhatsappMessage, redirectToWhatsapp } from '../lib/whatsapp';
 
 const benefits = [
@@ -126,6 +127,10 @@ export default function ForBrands() {
     setSelectError(false);
     setOpenSelect(null);
     setSubmitted(true);
+    trackKrayaaEvent('submit_brand_partnership', {
+      source: 'for_brands',
+      category: formData.category,
+    });
     redirectToWhatsapp(brandPartnershipWhatsappMessage(formData));
     setFormData(initialForm);
   };

@@ -1,9 +1,11 @@
 import { buildWhatsappUrl, generalWhatsappMessage } from '../lib/whatsapp';
+import { trackKrayaaEvent } from '../lib/analytics';
 
 export default function FloatingWhatsApp() {
   return (
     <a
       href={buildWhatsappUrl(generalWhatsappMessage())}
+      onClick={() => trackKrayaaEvent('click_whatsapp_floating', { source: 'floating_button' })}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Krayaa on WhatsApp"

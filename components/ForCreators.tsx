@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { trackKrayaaEvent } from '../lib/analytics';
 import { creatorApplicationWhatsappMessage, redirectToWhatsapp } from '../lib/whatsapp';
 
 const benefits = [
@@ -136,6 +137,11 @@ export default function ForCreators() {
     setSelectError(false);
     setSubmitted(true);
     setOpenSelect(null);
+    trackKrayaaEvent('submit_creator_application', {
+      source: 'for_creators',
+      niche: formData.niche,
+      followers: formData.followers,
+    });
     redirectToWhatsapp(creatorApplicationWhatsappMessage(formData));
     setFormData(initialForm);
   };
