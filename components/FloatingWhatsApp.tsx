@@ -1,10 +1,9 @@
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919999999999';
-const whatsappMessage = encodeURIComponent('Hi Krayaa, I want to know more about the launch.');
+import { buildWhatsappUrl, generalWhatsappMessage } from '../lib/whatsapp';
 
 export default function FloatingWhatsApp() {
   return (
     <a
-      href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+      href={buildWhatsappUrl(generalWhatsappMessage())}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Krayaa on WhatsApp"

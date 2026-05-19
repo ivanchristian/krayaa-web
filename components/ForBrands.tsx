@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { brandPartnershipWhatsappMessage, redirectToWhatsapp } from '../lib/whatsapp';
 
 const benefits = [
   'Compliance, customs, fulfillment, and customer support handled end-to-end.',
@@ -125,6 +126,7 @@ export default function ForBrands() {
     setSelectError(false);
     setOpenSelect(null);
     setSubmitted(true);
+    redirectToWhatsapp(brandPartnershipWhatsappMessage(formData));
     setFormData(initialForm);
   };
 

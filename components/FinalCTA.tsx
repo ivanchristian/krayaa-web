@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { redirectToWhatsapp, waitlistWhatsappMessage } from '../lib/whatsapp';
 
 const audienceOptions = ['Buyer', 'Creator', 'Brand'];
 const proofItems = ['Free to join', 'No spam', 'Early drops first'];
@@ -13,6 +14,7 @@ export default function FinalCTA() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    redirectToWhatsapp(waitlistWhatsappMessage(audience, email));
     setSubmitted(true);
     setEmail('');
   };

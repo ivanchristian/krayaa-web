@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { creatorApplicationWhatsappMessage, redirectToWhatsapp } from '../lib/whatsapp';
 
 const benefits = [
   'Significantly above standard affiliate rates',
@@ -135,6 +136,7 @@ export default function ForCreators() {
     setSelectError(false);
     setSubmitted(true);
     setOpenSelect(null);
+    redirectToWhatsapp(creatorApplicationWhatsappMessage(formData));
     setFormData(initialForm);
   };
 
