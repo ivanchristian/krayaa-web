@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { trackKrayaaEvent } from '../lib/analytics';
 
 export default function Navigation() {
@@ -17,7 +18,7 @@ export default function Navigation() {
 
   const navLinks = [
     { label: 'Why Krayaa', href: '#why-krayaa' },
-    { label: 'Vision', href: '#vision' },
+    { label: 'Press', href: '#press' },
     { label: 'For Creators', href: '#creators' },
     { label: 'For Brands', href: '#brands' },
   ];
@@ -28,9 +29,9 @@ export default function Navigation() {
         <div className="nav-shell">
           <div className="flex h-16 w-full items-center justify-between gap-4 md:h-20">
             {/* Logo */}
-            <a href="#hero" className="shrink-0 text-xl font-black tracking-[-0.04em] text-[var(--color-accent-primary)] transition-opacity hover:opacity-90 md:text-2xl">
+            <Link href="/" className="shrink-0 text-xl font-black tracking-[-0.04em] text-[var(--color-accent-primary)] transition-opacity hover:opacity-90 md:text-2xl">
               KRAYAA
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden flex-1 items-center justify-end gap-4 lg:flex xl:gap-7">
@@ -75,9 +76,9 @@ export default function Navigation() {
 
         <div style={{ position: 'relative', minHeight: '100vh', width: '100%', padding: '24px 18px 28px', boxSizing: 'border-box' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '20px' }}>
-            <a href="#hero" style={{ fontSize: '1.7rem', fontWeight: 900, letterSpacing: '-0.06em', color: 'var(--color-accent-primary)' }}>
+            <Link href="/" style={{ fontSize: '1.7rem', fontWeight: 900, letterSpacing: '-0.06em', color: 'var(--color-accent-primary)' }}>
               KRAYAA
-            </a>
+            </Link>
             <button
               aria-label="Close menu"
               onClick={() => setIsOpen(false)}

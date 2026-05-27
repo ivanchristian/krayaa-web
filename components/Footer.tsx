@@ -1,10 +1,12 @@
+import Link from 'next/link';
+
 const footerGroups = [
   {
     title: 'Platform',
     links: [
       { label: "What's Coming", href: '#whats-coming' },
       { label: 'Why Krayaa', href: '#why-krayaa' },
-      { label: 'Vision', href: '#vision' },
+      { label: 'Press', href: '#press' },
       { label: 'FAQ', href: '#faq' },
     ],
   },
@@ -70,9 +72,9 @@ export default function Footer() {
 
       <div className="footer-container">
         <div className="footer-brand footer-rise">
-          <a href="#hero" className="footer-logo">
+          <Link href="/" className="footer-logo">
             KRAYAA
-          </a>
+          </Link>
           <p>Authentic Korean culture commerce for India. Verified supply, creator-led drops, and a launch built for people who already love Korea.</p>
 
           <div className="footer-tags">
