@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 
 import PostHogAnalytics from '../components/PostHogAnalytics';
 import './globals.css';
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="overflow-x-hidden bg-[var(--color-bg-primary)] text-white antialiased selection:bg-[var(--color-accent-primary)] selection:text-white">
         <PostHogAnalytics />
         {children}
+        <Analytics />
       </body>
     </html>
   );
