@@ -205,7 +205,9 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="hero-text-rise reveal-delay-2 mt-6 max-w-3xl px-2 text-[16px] text-[var(--color-text-secondary)] sm:text-[18px] md:mt-8 md:px-0 md:text-[22px]" style={{ lineHeight: 1.9 }}>
-            Authentic K-beauty, K-pop merch, Korean TCG, and fashion drops curated for India, streamed by your favorite creators, delivered to your door.
+            <span className="hero-subline-1 block">Authentic K-beauty, K-pop merch, Korean TCG, and fashion drops</span>
+            <span className="hero-subline-2 block">curated for India, streamed by your favorite creators,</span>
+            <span className="hero-subline-3 block">delivered to your door.</span>
           </p>
 
           {/* CTA */}
@@ -307,6 +309,90 @@ export default function Hero() {
             animation: none !important;
             opacity: 0.62;
             transform: scale(0.86);
+          }
+        }
+
+        /* Reduce cluster size and add extra padding on Full HD-ish screens to avoid overlap */
+        @media (min-width: 1000px) and (max-width: 1600px) {
+          #hero {
+            padding-top: 5.2rem;
+            padding-bottom: 4rem;
+          }
+
+          #hero .hero-content {
+            width: min(90vw, 1180px) !important;
+            max-width: 1180px !important;
+            margin: 0 auto !important;
+            left: auto !important;
+            right: auto !important;
+            transform: none !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+          }
+
+          #hero .hero-content > div {
+            width: 100%;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          #hero h1 {
+            font-size: clamp(42px, 6vw, 72px) !important;
+          }
+
+          #hero .hero-text-rise > p,
+          #hero .hero-subline-1,
+          #hero .hero-subline-2,
+          #hero .hero-subline-3 {
+            font-size: 15px !important;
+            line-height: 1.8 !important;
+            max-width: 760px;
+          }
+
+          #hero .hero-category-cluster,
+          #hero .hero-product-cluster {
+            transform: scale(1.22) translateY(0) !important;
+            transform-origin: center center !important;
+            opacity: 1 !important;
+          }
+
+          #hero .hero-product-cluster.reveal-pop,
+          #hero .hero-category-cluster.reveal-pop {
+            animation: revealPop 980ms cubic-bezier(0.2, 0.9, 0.2, 1) both !important;
+          }
+
+          #hero .hero-category-upper.hero-category-left {
+            left: 2% !important;
+            top: 14% !important;
+          }
+
+          #hero .hero-category-upper.hero-category-right {
+            right: 2% !important;
+            top: 14% !important;
+          }
+
+          #hero .hero-category-lower-left {
+            left: 5% !important;
+            bottom: 8% !important;
+          }
+
+          #hero .hero-category-lower-right {
+            right: 5% !important;
+            bottom: 8% !important;
+          }
+
+          #hero .hero-product-cluster > div:last-child {
+            font-size: 0.85rem !important;
+            padding: 0.8rem 1.4rem !important;
+          }
+
+          #hero .hero-category-cluster {
+            opacity: 0.92;
           }
         }
 

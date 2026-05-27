@@ -343,3 +343,53 @@ p {
     transform: none !important;
   }
 }
+
+/* Laptop-focused vertical spacing fixes
+   Increase top/bottom padding for common shell/container elements on mid-sized laptops
+   (helps Full HD laptop viewports where vertical space is constrained). */
+@media (min-width: 1000px) and (max-width: 1600px) {
+  .fc-shell, .press-shell, .vision-shell, .faq-shell, .fb-shell, .container-wide, .hero-content {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+    align-items: flex-start !important;
+    min-height: auto !important;
+  }
+
+  /* Slightly reduce heavy product cluster scale to avoid overlap with hero text */
+  #hero .hero-product-cluster,
+  #hero .hero-category-cluster {
+    transform: scale(0.72) translateY(42px) !important;
+    opacity: 0.9 !important;
+  }
+
+  /* Ensure hero content doesn't translate too far up on these laptop sizes */
+  #hero .hero-content {
+    padding-top: 7rem !important;
+    padding-bottom: 5rem !important;
+    transform: none !important;
+  }
+
+  .fc-copy h2,
+  .fb-copy h2,
+  .press-copy h2,
+  .faq-intro h2,
+  .vision-copy h2 {
+    font-size: clamp(38px, 4vw, 52px) !important;
+  }
+
+  .fc-subhead,
+  .fb-subhead,
+  .press-copy p,
+  .faq-intro p {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+  .fb-shell,
+  .press-shell,
+  .faq-shell,
+  .fc-shell,
+  .vision-shell {
+    gap: 36px !important;
+  }
+}

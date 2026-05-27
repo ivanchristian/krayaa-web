@@ -885,6 +885,128 @@ export default function ForBrands() {
           to { opacity: 1; }
         }
 
+        @media (min-width: 1000px) and (max-width: 1600px) {
+          .fb-shell {
+            gap: 48px;
+            padding-top: 90px;
+            padding-bottom: 90px;
+            align-items: flex-start;
+          }
+
+          .fb-copy h2 {
+            font-size: clamp(38px, 4vw, 52px) !important;
+          }
+
+          .fb-subhead {
+            max-width: 560px;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-top: 16px;
+          }
+
+          .fb-hero-card {
+            max-width: 640px;
+            gap: 12px;
+          }
+
+          .fb-product-stage {
+            min-height: 190px;
+          }
+
+          .fb-product-stage img:nth-child(1) {
+            left: 12px;
+            top: 18px;
+            width: 80px;
+            height: 116px;
+          }
+
+          .fb-product-stage img:nth-child(2) {
+            left: 64px;
+            top: 24px;
+            width: 96px;
+            height: 108px;
+          }
+
+          .fb-product-stage img:nth-child(3) {
+            right: 8px;
+            bottom: 14px;
+            width: 104px;
+            height: 100px;
+          }
+
+          .fb-hero-card-copy {
+            min-height: 190px;
+            padding: 20px 22px 20px 0;
+          }
+
+          .fb-hero-card-copy strong {
+            font-size: 30px;
+            max-width: 320px;
+          }
+
+          .fb-proof-row {
+            max-width: 640px;
+            gap: 10px;
+          }
+
+          .fb-proof-row strong {
+            font-size: 15px;
+          }
+
+          .fb-proof-row span {
+            font-size: 10px;
+          }
+
+          .fb-benefits {
+            max-width: 640px;
+            gap: 10px;
+          }
+
+          .fb-benefit {
+            gap: 12px;
+            padding: 11px 13px;
+          }
+
+          .fb-benefit span {
+            font-size: 12px;
+          }
+
+          .fb-benefit p {
+            font-size: 13px;
+          }
+
+          .fb-form-card {
+            padding: 24px;
+          }
+
+          .fb-form-top h3 {
+            font-size: 28px;
+          }
+
+          .fb-field-grid {
+            gap: 12px;
+          }
+
+          .fb-field input,
+          .fb-field textarea,
+          .fb-custom-trigger {
+            font-size: 13px;
+          }
+
+          .fb-field textarea {
+            min-height: 100px;
+          }
+
+          .fb-submit {
+            min-height: 48px;
+            font-size: 13px;
+          }
+
+          .fb-form-note {
+            font-size: 10px;
+          }
+        }
+
         @media (max-width: 1180px) {
           .fb-shell {
             grid-template-columns: 1fr;
