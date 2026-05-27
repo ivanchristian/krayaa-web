@@ -53,13 +53,13 @@ export default function FinalCTA() {
 
           <div className="final-product-stage" aria-hidden="true">
             <div className="final-product final-product-one">
-              <Image src="/assets/product_1.png" alt="" fill sizes="120px" className="object-contain" />
+              <Image src="/assets/product_10.png" alt="K-pop lightstick" fill sizes="120px" className="object-contain" />
             </div>
             <div className="final-product final-product-two">
-              <Image src="/assets/product_9.png" alt="" fill sizes="160px" className="object-contain" />
+              <Image src="/assets/product_12.png" alt="K-pop album set" fill sizes="160px" className="object-contain" />
             </div>
             <div className="final-product final-product-three">
-              <Image src="/assets/product_6.png" alt="" fill sizes="150px" className="object-contain" />
+              <Image src="/assets/product_17.png" alt="Korean fashion shoes" fill sizes="150px" className="object-contain" />
             </div>
           </div>
 

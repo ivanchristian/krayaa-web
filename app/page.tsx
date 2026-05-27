@@ -36,11 +36,11 @@ export default function Home() {
               label: 'Why Krayaa',
               render: () => <WhyKrayaa />,
             },
-            {
-              key: 'vision',
-              label: 'Vision',
-              render: () => <Vision />,
-            },
+            // {
+            //   key: 'vision',
+            //   label: 'Vision',
+            //   render: () => <Vision />,
+            // },
             {
               key: 'creators',
               label: 'For Creators',
