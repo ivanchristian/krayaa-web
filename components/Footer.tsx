@@ -128,8 +128,10 @@ export default function Footer() {
           overflow: hidden;
           background: #070203;
           color: white;
-          padding: 58px 0 34px;
+          padding: 40px 0 20px;
           isolation: isolate;
+          display: flex;
+          align-items: flex-end;
         }
 
         .footer-bg {

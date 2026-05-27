@@ -265,7 +265,8 @@ export default function Press() {
 
         .press-stat strong {
           color: var(--color-accent-yellow);
-          font-size: clamp(25px, 2.6vw, 36px);
+          /* slightly smaller on large screens to fit layout */
+          font-size: clamp(22px, 2.2vw, 32px);
           line-height: 0.9;
           font-weight: 900;
           letter-spacing: -0.04em;
@@ -332,6 +333,46 @@ export default function Press() {
           line-height: 1;
           font-weight: 900;
           letter-spacing: -0.08em;
+        }
+
+        @media (min-width: 1000px) and (max-width: 1600px) {
+          .press-container {
+            min-height: auto;
+            align-items: flex-start;
+          }
+
+          .press-shell {
+            gap: 42px;
+            padding-top: 92px;
+            padding-bottom: 92px;
+            align-items: flex-start;
+          }
+
+          .press-copy h2 {
+            font-size: clamp(38px, 4vw, 52px) !important;
+          }
+
+          .press-copy p {
+            font-size: 15px;
+            line-height: 1.75;
+            max-width: 620px;
+          }
+
+          .press-scorecard {
+            padding: 28px;
+          }
+
+          .press-proof-grid {
+            gap: 18px;
+          }
+
+          .press-proof-card {
+            min-height: 248px;
+          }
+
+          .press-bottom-card {
+            padding: 28px;
+          }
         }
 
         .press-bottom-card {

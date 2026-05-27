@@ -264,7 +264,7 @@ export default function ForCreators() {
             <div className="fc-creator-card">
               <div className="fc-creator-image">
                 <Image
-                  src="https://images.pexels.com/photos/6593782/pexels-photo-6593782.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                  src="/assets/for_creators.jpg"
                   alt="Creator filming a beauty tutorial"
                   fill
                   sizes="(max-width: 767px) 100vw, 520px"
@@ -415,15 +415,21 @@ export default function ForCreators() {
 
         .fc-creator-card {
           display: grid;
-          grid-template-columns: minmax(210px, 0.74fr) minmax(0, 1fr);
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 14px;
           max-width: 680px;
           margin-top: 24px;
+          width: 100%;
+        }
+
+        .fc-creator-image,
+        .fc-creator-card-content {
+          width: 100%;
         }
 
         .fc-creator-image {
           position: relative;
-          min-height: 190px;
+          min-height: 250px;
           overflow: hidden;
           border: 1px solid rgba(255,255,255,0.13);
           border-radius: 26px;
@@ -445,7 +451,7 @@ export default function ForCreators() {
 
         .fc-creator-card-content {
           display: flex;
-          min-height: 190px;
+          min-height: 250px;
           flex-direction: column;
           justify-content: center;
           border: 1px solid rgba(255,255,255,0.12);
@@ -1150,6 +1156,76 @@ export default function ForCreators() {
           }
         }
 
+        @media (min-width: 1000px) and (max-width: 1600px) {
+          .fc-container {
+            align-items: flex-start;
+            min-height: auto;
+          }
+
+          .fc-shell {
+            align-items: flex-start;
+            gap: 40px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+          }
+
+          .fc-copy h2 {
+            font-size: clamp(42px, 4vw, 52px) !important;
+          }
+
+          .fc-subhead {
+            font-size: 14px;
+            line-height: 1.65;
+            margin-top: 16px;
+          }
+
+          .fc-creator-card {
+            max-width: 640px;
+            gap: 12px;
+          }
+
+          .fc-creator-image,
+          .fc-creator-card-content {
+            min-height: 220px;
+          }
+
+          .fc-creator-card-content {
+            padding: 20px;
+          }
+
+          .fc-creator-card-content strong {
+            font-size: 26px;
+          }
+
+          .fc-creator-card-content p {
+            font-size: 13px;
+          }
+
+          .fc-benefits {
+            gap: 9px;
+            margin-top: 12px;
+          }
+
+          .fc-benefit {
+            gap: 11px;
+            padding: 10px;
+          }
+
+          .fc-benefit span {
+            width: 38px;
+            height: 38px;
+          }
+
+          .fc-benefit p {
+            font-size: 13px;
+          }
+
+          .fc-benefit-note {
+            padding: 10px 12px;
+            font-size: 11px;
+          }
+        }
+
         @media (max-height: 780px) and (min-width: 1024px) {
           .fc-shell {
             padding-top: 44px;
@@ -1172,7 +1248,7 @@ export default function ForCreators() {
 
           .fc-creator-image,
           .fc-creator-card-content {
-            min-height: 208px;
+            min-height: 220px;
           }
 
           .fc-field textarea {
