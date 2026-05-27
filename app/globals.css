@@ -132,9 +132,9 @@ p {
   align-items: center;
   justify-content: center;
 
-  min-height: 52px;
+  min-height: 38px;
 
-  padding: 0.9rem 1.5rem;
+  padding: 0.45rem 1.5rem;
 
   border-radius: 9999px;
 
@@ -201,5 +201,145 @@ p {
 
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* Section reveal motion */
+.reveal-pop,
+.reveal-grow,
+.reveal-fade,
+.reveal-rise {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.carousel-slide-active .reveal-pop {
+  animation: revealPop 980ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.carousel-slide-active .reveal-grow {
+  animation: revealGrow 920ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.carousel-slide-active .reveal-fade {
+  animation: revealFade 860ms ease both;
+}
+
+.carousel-slide-active .reveal-rise {
+  animation: revealRise 900ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.carousel-slide-active .why-krayaa-panel,
+.carousel-slide-active .vision-stage,
+.carousel-slide-active .creator-form,
+.carousel-slide-active .brand-form,
+.carousel-slide-active .press-card,
+.carousel-slide-active .faq-item,
+.carousel-slide-active .final-visual,
+.carousel-slide-active .footer-rise {
+  animation: revealGrow 940ms cubic-bezier(0.2, 0.9, 0.2, 1) both !important;
+}
+
+.carousel-slide-active .vision-copy,
+.carousel-slide-active .creator-copy,
+.carousel-slide-active .brand-copy,
+.carousel-slide-active .press-rise,
+.carousel-slide-active .faq-intro,
+.carousel-slide-active .final-content {
+  animation: revealRise 920ms cubic-bezier(0.2, 0.9, 0.2, 1) both !important;
+}
+
+.carousel-slide-active .creator-benefit,
+.carousel-slide-active .brand-benefit {
+  animation: revealPop 880ms cubic-bezier(0.2, 0.9, 0.2, 1) both !important;
+}
+
+.reveal-delay-1 {
+  animation-delay: 280ms !important;
+}
+
+.reveal-delay-2 {
+  animation-delay: 560ms !important;
+}
+
+.reveal-delay-3 {
+  animation-delay: 840ms !important;
+}
+
+.reveal-delay-4 {
+  animation-delay: 1120ms !important;
+}
+
+.reveal-delay-5 {
+  animation-delay: 1400ms !important;
+}
+
+.reveal-delay-6 {
+  animation-delay: 1680ms !important;
+}
+
+.reveal-delay-7 {
+  animation-delay: 1960ms !important;
+}
+
+@keyframes revealPop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.88) rotate(var(--reveal-rotate, 0deg));
+  }
+
+  72% {
+    opacity: 1;
+    transform: translate3d(0, -3px, 0) scale(1.018) rotate(var(--reveal-rotate, 0deg));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(var(--reveal-rotate, 0deg));
+  }
+}
+
+@keyframes revealGrow {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes revealFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes revealRise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-pop,
+  .reveal-grow,
+  .reveal-fade,
+  .reveal-rise {
+    opacity: 1;
+    animation: none !important;
+    transform: none !important;
   }
 }
